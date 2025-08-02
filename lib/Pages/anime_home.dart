@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_http_req/constant/colors.dart';
 import '../models/anime_model.dart';
 import '../services/anime_service.dart';
 import 'anime_detail.dart';
@@ -46,7 +47,8 @@ class _AnimeHomeState extends State<AnimeHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Anime List"),
+        title: Text("Anime List", style: TextStyle(color: primColor),),
+        backgroundColor: seconColor,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60),
           child: Padding(
@@ -77,7 +79,9 @@ class _AnimeHomeState extends State<AnimeHome> {
                   itemBuilder: (context, index) {
                     final anime = animeList[index];
                     return Card(
-                      margin: EdgeInsets.all(10),
+                      elevation: 5,
+                      
+                      margin: EdgeInsets.all(8),
                       child: ListTile(
                         leading: Image.network(
                           anime.imageUrl,
@@ -86,6 +90,7 @@ class _AnimeHomeState extends State<AnimeHome> {
                           fit: BoxFit.cover,
                         ),
                         title: Text(anime.title),
+                        subtitle: Text('Total Eps ${anime.episodes}'),
                         onTap: () {
                           Navigator.push(
                             context,

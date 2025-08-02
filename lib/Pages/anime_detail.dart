@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_http_req/constant/colors.dart';
 import '../models/anime_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -38,14 +39,23 @@ class _AnimeDetailPageState extends State<AnimeDetailPage> {
       appBar: AppBar(title: Text(widget.anime.title)),
       body: SingleChildScrollView(
         child: Column(
+          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Gambar Anime di Atas
-            Image.network(
-              widget.anime.imageUrl,
-              width: double.infinity,
-              height: 250,
-              fit: BoxFit.cover,
+            Container(
+              margin: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: seconColor
+              ),
+              child: Image.network(
+                widget.anime.imageUrl,
+                width: double.infinity,
+                height: 250,
+                fit: BoxFit.cover,
+                
+              ),
             ),
 
             // Informasi Anime
@@ -57,8 +67,8 @@ class _AnimeDetailPageState extends State<AnimeDetailPage> {
                   Text(widget.anime.title,
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                   SizedBox(height: 10),
-                  Text("Score: ${widget.anime.score ?? 'N/A'}"),
-                  Text("Episodes: ${widget.anime.episodes ?? 'N/A'}"),
+                  Text("Score: ${widget.anime.score ?? 'N/A'}", style: TextStyle(fontSize: 18, color: thirdColor ),),
+                  Text("Episodes: ${widget.anime.episodes ?? 'N/A'}", style: TextStyle(fontSize: 20, color: seconColor )),
                   Text("Aired: ${widget.anime.aired ?? 'N/A'}"),
                   SizedBox(height: 16),
                   Text(
